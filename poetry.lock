@@ -60,6 +60,7 @@ optional = false
 python-versions = ">=3.7"
 
 [package.dependencies]
+aiohttp = {version = ">=3.7.4", optional = true, markers = "extra == \"d\""}
 click = ">=8.0.0"
 mypy-extensions = ">=0.4.3"
 pathspec = ">=0.9.0"
@@ -216,7 +217,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "f91323331da901c9c50b630abfbfc8a3a7c2b9ca27b9294e3db4be3a468145b0"
+content-hash = "df2ea20b44089c57ef1137c3545901891c60367fbf6357391e422a845888af80"
 
 [metadata.files]
 aiohttp = []
