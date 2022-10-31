@@ -75,24 +75,3 @@ async def task_coroutine():
 
 
 asyncio.run(task_coroutine())
-
-# ================================================== #
-import aiohttp
-
-
-async def fetcher(session: aiohttp.ClientSession, url: str) -> str:
-    async with session.get(url) as res:
-        return await res.text()
-
-
-async def async_crawler():
-    urls = ["https://naver.com", "https://google.com", "https://instagram.com"]
-
-    async with aiohttp.ClientSession() as session:
-        # 동시에 세 사이트에 request 요청을 수행함
-        res = await asyncio.gather(*[fetcher(session, url) for url in urls])
-        print(res)
-
-
-if __name__ == "__main__":
-    asyncio.run(async_crawler())

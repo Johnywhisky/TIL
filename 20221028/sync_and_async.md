@@ -80,12 +80,19 @@ if __name__ == "__main__":
         print(time.time() - s) # => 약 7.x초 소요
 ```
 
-## Coroutine
+## 코루틴과 제너레이터
 ### Sub-routine
 서브루틴이란 하나의 진입점과 하나의 탈출점이 있는 루틴(예를 들어 함수)
+``` python
+import time
+
+def delivery(mealtime): # <- 진입점
+	time.sleep(mealtime)
+    return # <- 탈출점
+```
 
 ### coroutine
-코루틴이란 다양한 진입점과 다양한 탈출점이 있는 루틴을 의미. 파이선에서는 async-await로 구현되어있는 함수를 코루틴으로 정의하며 `await`는 항상 `async` 함수 내에서 사용되어야 하며 또한 awaitable object와 함께 사용되야 한다.
+코루틴이란 다양한 진입점과 다양한 탈출점이 있는 루틴을 의미. 파이선에서는 async-await로 구현되어있는 함수를 코루틴으로 정의한다. `await`는 항상 `async` 함수 내에서 사용되어야 하며 또한 awaitable object와 함께 사용되야 한다.
 
 ``` python
 import time, asyncio
@@ -112,7 +119,7 @@ if __name__ == "__main__":
     # main routine 탈출점
 ```
 
-### Awaitable Object
+## Awaitable Object
 어웨이터블 객체에는 코루틴, 테스크, 퓨처가 있다.
 
 ### 테스크(Task)
@@ -122,7 +129,7 @@ import asyncio
 
 async def nested():
 	return 42
-
+	
 async def main():
 	task = asyncio.create_task(nested())
 
@@ -156,6 +163,5 @@ if __name__ == "__main__":
 	asyncio.run(main())
 ```
 
-## 주의
 ### 코루틴(async func)은 멀티 스레드이다?
 답은 아니다. 코루틴은 단일 스레드에서 동작한다.
